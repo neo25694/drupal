@@ -1,0 +1,6 @@
+examples.menu_example.tabs:
+  title: 'Tabs'
+  description: 'Shows how to create primary and secondary tabs'
+  parent: examples.menu_example
+  route_name: examples.menu_example.tabs
+  weight: 30

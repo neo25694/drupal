@@ -1,0 +1,9 @@
+services:
+  train_neo_2.default:
+    class: Drupal\train_neo_2\DefaultService
+    arguments: ['@entity.memory_cache', '@entity_type.manager', '@database']
+
+  train_neo_2.subscriber:
+    class: '\Drupal\train_neo_2\EventSubscriber\UserLoginSubscriber'
+    tags:
+      - { name: 'event_subscriber' }

@@ -1,0 +1,59 @@
+
+train_neo_2.default_controller_test:
+  path: '/train_neo_2/test'
+  defaults:
+    _controller: '\Drupal\train_neo_2\Controller\DefaultController::test'
+    _title: 'Train Live Demo'
+  requirements:
+    _permission: 'access content'
+    # _role: teacher, anonymous
+
+train_neo_2.default_form:
+  path: '/train_neo_2/form/default'
+  defaults:
+    _form: '\Drupal\train_neo_2\Form\DefaultForm'
+    _title: 'DefaultForm'
+  requirements:
+    _access: 'TRUE'
+
+train_neo_2.entity_view:
+  path: '/train_neo_2/enview/{node}'
+  defaults:
+    _entity_view: 'node.teaser'
+  requirements:
+    _access: 'TRUE'
+
+train_neo_2.entity_form:
+  path: '/train_neo_2/enform/{node}'
+  defaults:
+    _entity_form: 'node.default'
+  requirements:
+    _access: 'TRUE'
+
+   
+train_neo_2.default_config_form:
+  path: '/admin/config/train_neo_2/defaultconfig'
+  defaults:
+    _form: '\Drupal\train_neo_2\Form\DefaultConfigForm'
+    _title: 'DefaultConfigForm'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+    
+train_neo_2.assignment_form:
+  path: '/train_neo_2/form/assignment'
+  defaults:
+    _form: '\Drupal\train_neo_2\Form\AssignmentForm'
+    _title: 'AssignmentForm'
+  requirements:
+    _access: 'TRUE'
+
+    # ---------------------------------------
+train_neo_2.justcheck:
+  path: '/justcheck'
+  defaults:
+    _controller: '\Drupal\train_neo_2\Controller\DefaultController::justcheck'
+    _title: 'justcheck demo'
+  requirements:
+    _permission: 'access content'

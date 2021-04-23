@@ -1,0 +1,106 @@
+<?php
+
+function train_neo_2_schema() {
+  
+  $schema = [];
+
+
+  $schema['teams'] = [
+    'description' => 'The table that holds team data.',
+    'fields' => [
+      'id' => [
+        'description' => 'The primary identifier.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'name' => [
+        'description' => 'The team name.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'description' => [
+        'description' => 'The team description.',
+        'type' => 'text',
+        'size' => 'normal',
+      ],
+      'location' => [
+        'description' => 'The team location.',
+        'type' => 'varchar',
+        'length' => 255,
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  $schema['players'] = [
+    'description' => 'The table that holds player data.',
+    'fields' => [
+      'id' => [
+        'description' => 'The primary identifier.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'team_id' => [
+        'description' => 'The ID of the team it belongs to.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+      ],
+      'name' => [
+        'description' => 'The player name.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'data' => [
+        'description' => 'Arbitrary data about the player.',
+        'type' => 'blob',
+        'size' => 'big',
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+  
+  return $schema;
+
+}
+
+
+function train_neo_2_install() {
+  $row = [
+    ['name'=>'rahul team','description'=>'this is descr of rahul team','location'=>'pune'],
+    ['name'=>'rahul team','description'=>'this is descr of rahul team','location'=>'pune']
+  ];
+
+  $dbc = \Drupal::database();
+  $dbc->insert('teams')->fields($row[0])->execute();
+
+}
+
+function train_neo_2_update_8001() {
+  drupal_set_message('test 8001 working');
+  \Drupal::configFactory()->getEditable('train_neo_2.defaultconfig')
+            ->set('key','test123')
+            ->set('api_secret_key','test456')
+            ->save();
+}
+
+function train_neo_2_update_8002() {
+  drupal_set_message('test 8002 working!');
+}
+
+# function train_neo_2_requirements() {
+#   $requirements = [];
+
+#   # if ($phase == 'runtime') {
+#     $requirements['drupal'] = [
+#       'title' => t('Required Drupal Version is: 9.1.5'),
+#       'value' => t('Current Drupal Version is: '.\Drupal::VERSION),
+#       'severity' => REQUIREMENT_ERROR,
+#     ];
+#   # }
+
+#   return $requirements;
+# }

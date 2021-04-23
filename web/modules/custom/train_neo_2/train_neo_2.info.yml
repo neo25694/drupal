@@ -1,0 +1,5 @@
+name: 'train_neo_2'
+type: module
+description: 'My Awesome Module'
+core: 8.x
+package: 'Custom'
